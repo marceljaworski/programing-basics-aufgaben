@@ -13,7 +13,7 @@ const result2 = (x < 0.5) ? "Ja" : "Nein"// ternary operator
 console.log(result2)
 
 //Lasst uns würfeln! Ein sechsseitiger Würfel wird für viele Brettspiele benötigt. Schreibe ein Programm, welches für uns würfelt. Es soll zufällig eine Augenzahl zwischen 1 und 6 ausgeben.
-//Bei einer 6 soll außerdem die Meldung erscheinen, dass man noch einmal würfeln darf. (bearbeitet) 
+//Bei einer 6 soll außerdem die Meldung erscheinen, dass man noch einmal würfeln darf.
 
 const wurfelZahl = Math.floor(Math.random() * 6 + 1);
 if (wurfelZahl === 6) {
