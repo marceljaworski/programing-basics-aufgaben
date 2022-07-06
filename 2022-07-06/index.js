@@ -19,5 +19,5 @@
 // Ausserdem du kannst die Datei andern, hinzufugen und loschen.
 // Um eine Array zu stellen brauch du eine Variable deklarieren, zum Beispil "const", und dann swischen den ekige klamarn alles die elemente, datein schreiben.
 // Zum diferencieren de verschidene elemente schreib ein coma ", " swischen den elementen
-// Zum Beispil: const name = [auto, bike, airplaine, horse]
+// Zum Beispil: const name = [Auto, Bike, Airplaine, Boat, horse]
 
