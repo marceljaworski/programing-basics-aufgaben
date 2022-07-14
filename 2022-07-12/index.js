@@ -17,23 +17,20 @@ function getRandomNumbers(amount) {
 
 
 // Beispiel: gib 10 Zufallszahlen aus und speichere sie in der Variable randomNumbers
-const randomNumbers = getRandomNumbers(10);
+const randomNumbers = getRandomNumbers(100);
 console.log(randomNumbers);
 
 // --------------------------------------------------------------------------
-//1.Losung
+// 1. Losung
 const unter50 = randomNumbers.filter(element => element < 50); 
-console.log(` Es gibt ${unter50.length} Zahlen unter 50`);
+console.log(`Es gibt ${unter50.length} Zahlen unter 50`);
 
-//2. Losung
-const unter50Array = unter50.slice();
-//console.log(unter50Array)
-//console.log(unter50)
-console.log(`Zahlen unter 50: `, unter50Array);
+// 2. Losung
+console.log(`Zahlen unter 50: `, unter50);
 
 const grosserGleich50 = randomNumbers.filter(element => element >= 50); 
-const grosserGleich50Array = grosserGleich50.slice();
-console.log(`Zahlen größer oder gleich 50: `,grosserGleich50Array);
+
+console.log(`Zahlen größer oder gleich 50: `,grosserGleich50);
 
 
 // 1. Gib die Anzahl der Zahlen unter 50 aus.
