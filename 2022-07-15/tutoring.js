@@ -6,7 +6,7 @@ let sum = 0;
 for(i=0; i<array.length; i++){
     sum += array[i];
 }
-console.log(sum)
+console.log(sum);
 
 
 // 2. Hello Frien. Create an array filled with your friends' and family's names. Loop over the array and greet each friend. Bonus: Print the indexes of each item in the array. Examples:
