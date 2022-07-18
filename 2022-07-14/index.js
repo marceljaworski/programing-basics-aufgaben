@@ -21,8 +21,11 @@ function capitalize(text){
 console.log(capitalize(text1));
 
 // 2. Entwickle eine Funktion, die einen gegebenen Text auf maximal 30 Wörter gekürzt zurückgibt. Ist der Text länger als 30 Wörter, soll in der Ausgabe ein "..." am Ende angefügt werden.
-console.log("2.--------------")
+console.log("2.--------------");
 function resumeText(text){
+    if (typeof text !== "string"){
+        return "Invalides Argument! Es muss ein String übergeben werden!"; 
+    }
     const words = text.split(" ");
     if (words.length > 30){
         const resume = words.slice(0, 30);
@@ -32,33 +35,10 @@ function resumeText(text){
 console.log(resumeText(text3))
 
 // 3. Kombiniere beide Funktionen, sodass ein übergebener Text gekürzt und die Anfangsbuchstaben der Wörter in Großbuchstaben ausgegeben werden.
-console.log("3.--------------")
-function capitalizeResume(text){
-    if (typeof text !== "string"){
-        return "Invalides Argument! Es muss ein String übergeben werden!"; 
-    }
-    const words = text.split(" ");
+console.log("3.--------------");
 
-    const capitalizedWords = [];
-   
-    for (let i = 0; i < words.length; i++){
-        const capitalizedWord = words[i].charAt(0).toUpperCase() + words[i].substring(1);
-        capitalizedWords.push(capitalizedWord);
-    }
-    if (capitalizedWords.length > 30){
-        const resume = capitalizedWords.slice(0, 30);
-        return resume.join(" ") + "...";
-    }  
-    const result = capitalizedWords.join(" ");
-    return result;
-}
-console.log(capitalizeResume(text3));
-
-//console.log("3. alternative2--------------")
-//function alternative2(text){
-//return resumeText(capitalize(text));
-//}
-//console.log(alternative2(text1));
+console.log("test------------");
+console.log(capitalize(resumeText(text3)));
 
 
 // 4. Prüfe in jeder Funktion, ob die übergebenen Werte tatsächlich Strings sind. Falls nicht, gib eine Fehlermeldung zurück (z.B. "Invalides Argument! Es muss ein String übergeben werden!").
