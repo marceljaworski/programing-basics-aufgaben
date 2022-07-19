@@ -34,7 +34,7 @@ function wordInText(word, text){
     }
     return count;
 }
-console.log(wordInText("the", "the quick brown fox jumps over the lazy dog"));
+console.log(wordInText("the", "the quick brown fox jumps over the lazy, lovely dog"));
 
 console.log(' 3. ---------')
 function wordReverse (text){
