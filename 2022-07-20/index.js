@@ -11,12 +11,17 @@ const cards = ['2 Pik','3 Pik','4 Pik','5 Pik','6 Pik', '7 Pik', '8 Pik', '9 Pik
 console.log(" 1. ----------");
 function getCard(array){
     const position = Math.floor(Math.random() * array.length);
-    console.log(position)
     const solution = array[position];
-    array.splice(position, 1);
-    return solution;
+    console.log(array.length)
+    if (array.length == 0){
+        return "Der Stapel ist leer"; 
+    }else if (array.length > 0) {
+        array.splice(position, 1);
+        return solution;
+    }
 };
 console.log(getCard(cards));
+
 console.log(cards);
 
 console.log(" 1. Bonus ----------");
@@ -43,16 +48,14 @@ Die Funktion erhält 4 Parameter
 4. useSpecialCharacters, ein boolean, gibt an ob das Passwort Sonderzeichen wie @ ! $ % & * enthalten soll.
 —--
 */
-
+    
 console.log(" 2.----------");
 
 function createPassword(length, useSmallLetters, useCapitalLetters, useSpecialCharacters, useNumbers){
-
     const lowerCase = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
     const upperCase = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z',];
-    const symbol = "!@#$%^&*()_+~\\`|}{[]:;?><,./-=";
+    const symbol = ['!', '@',  '#', '$', '%', '^','&', '*',  '(', ')', '_', '+','~', '\\', '`', '|', '}', '{','[', ']',  ':', ';', '?', '>','<', ',',  '.', '/', '-', '='];
     const numbers = [`0`,`1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`];
-    const symbolArr = symbol.split("");
     const password = [];
     while (password.length < length ){
         if(useSmallLetters = true){
@@ -64,8 +67,8 @@ function createPassword(length, useSmallLetters, useCapitalLetters, useSpecialCh
             password.push(upperCase[position]);
         }
         if (useSpecialCharacters = true){
-            const position = Math.floor(Math.random() * symbolArr.length);
-            password.push(symbolArr[position]);
+            const position = Math.floor(Math.random() * symbol.length);
+            password.push(symbol[position]);
         } 
         if (useNumbers = true){
             const position = Math.floor(Math.random() * numbers.length);
@@ -75,7 +78,7 @@ function createPassword(length, useSmallLetters, useCapitalLetters, useSpecialCh
     return password.join("");
 };
 console.log(createPassword(16, false, true, true, true))
-
+    
 // Functions
 function upperCaseRandom (boolean){
     const upperCase = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z',];
@@ -117,14 +120,14 @@ Bonus (Mit mehr Parametern): https://www.freecodecamp.org/learn/coding-interview
 */
 console.log(" 3. ----------");
 const arr1 = [1, 2, 3];
-const arr2 = [1, 4];
+const arr2 = [2, 3, 4];
 
 function symmetricDifference(arr1, arr2){
     const arr1a = [];
     for ( let i = 0; i <arr1.length; i++){
         if (arr1[i]!==arr2[i]){
             arr1a.push(arr1[i]);   
-        } 
+        }
     } 
     for ( let i = 0; i <arr2.length; i++){
         if (arr1[i]!==arr2[i]){
@@ -136,6 +139,8 @@ function symmetricDifference(arr1, arr2){
     for ( let i = 0; i <arrSort.length; i++){
         if (arrSort[i]!==arrSort[i + 1]){
             result.push(arrSort[i]);   
+        }else{
+            arr2.splice(arrSort[i], 1)
         }
     } 
     return result;
