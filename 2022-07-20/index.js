@@ -12,7 +12,6 @@ console.log(" 1. ----------");
 function getCard(array){
     const position = Math.floor(Math.random() * array.length);
     const solution = array[position];
-    console.log(array.length)
     if (array.length == 0){
         return "Der Stapel ist leer"; 
     }else if (array.length > 0) {
@@ -20,22 +19,37 @@ function getCard(array){
         return solution;
     }
 };
-console.log(getCard(cards));
 
-console.log(cards);
+// console.log(getCard(cards))
+// function shuffleCards(array){
+//     const cardsCopy = [...cards];
+//     const shuffledCards = [];
+//     while(cardsCopy.length >= 1){
+//         const randomPosition = Math.floor(Math.random()* cardsCopy.length);
+//         const randomCard = cardsCopy[randomPosition];
+//         shuffledCards.push(randomCard);
+//         cardsCopy.splice(randomPosition, 1);
+//     }
+//     cards = [...shuffledCards]
+// }
+// // for (let i=0; i<53; i++){
+//     console.log(getCard(cards));
+// };return array
 
-console.log(" 1. Bonus ----------");
+// function shuffleCards(array){
+//     for(let i = array.lenght - 1 ; i > 0; i--){
+//         const positionAleatoria = Math.floor(Math.random() * (i+1));
+//         let origin = array[i]
+//         array[i]= array[positionAleatoria];
+//         array[positionAleatoria] = origin;
+//     }
+// }
 
-function shuffleCards(array){
-    const position = Math.floor(Math.random() * array.length);
-    const shuffledCards = [];
-    for (let i = 0; i < array.length; i++){
-        let card = array[i]; 
-        shuffledCards.push(card);
-    }
-    return shuffledCards
-}
-//console.log(shuffleCards(cards));
+// console.log(shuffleCards(cards));
+// let indiceAleatorio = Math.floor(Math.random() * (i + 1));
+// 		let temporal = arreglo[i];
+// 		arreglo[i] = arreglo[indiceAleatorio];
+// 		arreglo[indiceAleatorio] = temporal;
 
 /*
 Aufgabe 2 (Passwort Generator)
@@ -58,26 +72,26 @@ function createPassword(length, useSmallLetters, useCapitalLetters, useSpecialCh
     const numbers = [`0`,`1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`];
     const password = [];
     while (password.length < length ){
-        if(useSmallLetters = true){
+        if(useSmallLetters){
             const position = Math.floor(Math.random() * lowerCase.length);
             password.push(lowerCase[position]);
         }  
-        if(useCapitalLetters = true){
+        if(useCapitalLetters){
             const position = Math.floor(Math.random() * upperCase.length);
             password.push(upperCase[position]);
         }
-        if (useSpecialCharacters = true){
+        if (useSpecialCharacters){
             const position = Math.floor(Math.random() * symbol.length);
             password.push(symbol[position]);
         } 
-        if (useNumbers = true){
+        if (useNumbers){
             const position = Math.floor(Math.random() * numbers.length);
             password.push(numbers[position]);
         }
     } 
     return password.join("");
 };
-console.log(createPassword(16, false, true, true, true))
+console.log(createPassword(5, true, false, true, true))
     
 // Functions
 function upperCaseRandom (boolean){
@@ -119,30 +133,13 @@ symmetricDifference([1, 2, 3], [5, 2, 1, 4, 5]) sollte [3, 4, 5] zurückgeben
 Bonus (Mit mehr Parametern): https://www.freecodecamp.org/learn/coding-interview-prep/algorithms/find-the-symmetric-difference
 */
 console.log(" 3. ----------");
-const arr1 = [1, 2, 3];
-const arr2 = [2, 3, 4];
+const arr1 = [1, 2, 3, 3];
+const arr2 = [5, 2, 1, 4];
+function symmetricDifference(arrX, arrY){
+    const x = arrX.filter(x => !arrY.includes(x));
+    const y = arrY.filter(x => !arrX.includes(x));
+    const difference = x.concat(y); 
+    return difference;    
+}
 
-function symmetricDifference(arr1, arr2){
-    const arr1a = [];
-    for ( let i = 0; i <arr1.length; i++){
-        if (arr1[i]!==arr2[i]){
-            arr1a.push(arr1[i]);   
-        }
-    } 
-    for ( let i = 0; i <arr2.length; i++){
-        if (arr1[i]!==arr2[i]){
-            arr1a.push(arr2[i]);   
-        }
-    } 
-    const arrSort = arr1a.sort();
-    const result = [];
-    for ( let i = 0; i <arrSort.length; i++){
-        if (arrSort[i]!==arrSort[i + 1]){
-            result.push(arrSort[i]);   
-        }else{
-            arr2.splice(arrSort[i], 1)
-        }
-    } 
-    return result;
-};
-console.log(symmetricDifference(arr1, arr2))
+console.log(symmetricDifference(arr1, arr2));

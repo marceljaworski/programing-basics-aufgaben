@@ -38,7 +38,8 @@ console.log("Teil B----getAllFibonacciNumbersBelow")
 function getAllFibonacciNumbersBelow(num){
     const result = [0, 1];
     while(result[result.length-1] < num - result[result.length-2]){
-        const sum = result[result.length-1] + result[result.length-2];
+        const sum = getNextFibonacciNumber(result[result.length-1], result[result.length-2])
+        //const sum = result[result.length-1] + result[result.length-2];
         result.push(sum);
     }
     return result;
@@ -46,3 +47,35 @@ function getAllFibonacciNumbersBelow(num){
 console.log(getAllFibonacciNumbersBelow(10));
 console.log(getAllFibonacciNumbersBelow(50));
 console.log(getAllFibonacciNumbersBelow(144));
+// function getAllFibonacciNumbersBelow(num){
+//     arr = [];
+
+//     do {
+//         arr.length === 0 ? arr.push(0, 1) : arr.push((arr[arr.length-2] + arr[arr.length-1]));
+//     } while (arr[arr.length-2] + arr[arr.length-1] < num);
+
+//     return arr;
+// }
+
+// console.log(getAllFibonacciNumbersBelow(35));
+//average
+
+const arr = [1, 2];
+const arr2 = [1, 2, 5, 9];
+const average = (array) =>{
+    let sum=0;
+    for (let i = 0; i<array.length; i++){
+        sum += array[i];
+    }
+
+    return sum/array.length;
+    
+}
+console.log(average(arr))
+console.log(average(arr2))
+
+function century(year){
+    return Math.floor(( year - 1) / 100) + 1
+}
+console.log(century(1502));
+    
