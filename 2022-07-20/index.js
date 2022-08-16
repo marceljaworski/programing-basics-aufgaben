@@ -20,18 +20,18 @@ function getCard(array){
     }
 };
 
-// console.log(getCard(cards))
-// function shuffleCards(array){
-//     const cardsCopy = [...cards];
-//     const shuffledCards = [];
-//     while(cardsCopy.length >= 1){
-//         const randomPosition = Math.floor(Math.random()* cardsCopy.length);
-//         const randomCard = cardsCopy[randomPosition];
-//         shuffledCards.push(randomCard);
-//         cardsCopy.splice(randomPosition, 1);
-//     }
-//     cards = [...shuffledCards]
-// }
+console.log(getCard(cards))
+function shuffleCards(array){
+    const cardsCopy = [...cards];
+    const shuffledCards = [];
+    while(cardsCopy.length >= 1){
+        const randomPosition = Math.floor(Math.random()* cardsCopy.length);
+        const randomCard = cardsCopy[randomPosition];
+        shuffledCards.push(randomCard);
+        cardsCopy.splice(randomPosition, 1);
+    }
+    cards = [...shuffledCards]
+}
 // // for (let i=0; i<53; i++){
 //     console.log(getCard(cards));
 // };return array
@@ -45,7 +45,7 @@ function getCard(array){
 //     }
 // }
 
-// console.log(shuffleCards(cards));
+console.log(shuffleCards(cards));
 // let indiceAleatorio = Math.floor(Math.random() * (i + 1));
 // 		let temporal = arreglo[i];
 // 		arreglo[i] = arreglo[indiceAleatorio];
