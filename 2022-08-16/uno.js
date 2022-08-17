@@ -8,7 +8,7 @@ const player = {
 };
 
 // Alle Karten im Spiel
-const stack = [
+let stack = [
     { color: "green", number: "1" },
     { color: "green", number: "2" },
     { color: "green", number: "3" },
@@ -65,59 +65,75 @@ const stack = [
 
 // Mischen, mischen, mischen!
 // Ganz schön lang, diese Zeile... Geht bestimmt besser.
-const shuffledStack = stack.sort(() => Math.random() - 0.5).sort(); 
-// function shuffleCards(array){
-//     const cardsCopy = [...cards];
-//     const shuffledCards = [];
-//     while(cardsCopy.length >= 1){
-//         const randomPosition = Math.floor(Math.random()* cardsCopy.length);
-//         const randomCard = cardsCopy[randomPosition];
-//         shuffledCards.push(randomCard);
-//         cardsCopy.splice(randomPosition, 1);
-//     }
-//     cards = [...shuffledCards]
-// }
+// const shuffledStack = stack.sort(() => Math.random() - 0.5).sort(); 
+function shuffledStack(arr){
+    const cardsCopy = [...stack];
+    const shuffledCards = [];
+    while(cardsCopy.length > 1){
+        const randomPosition = Math.floor(Math.random()* cardsCopy.length);
+        const randomCard = cardsCopy[randomPosition];
+        shuffledCards.push(randomCard);
+        cardsCopy.splice(randomPosition, 1);
+    }
+    stack = [...shuffledCards];
+    return `Mischen, mischen, mischen!`
+};
+
+console.log(shuffledStack(stack))
 
 // Spieler 1 mit der Vorlage erstellen
 const player1 = JSON.parse(JSON.stringify(player));
 player1.name = "Fantasia";
 
 // Fünf Karten ziehen
-let card1 = shuffledStack.shift();
-let card2 = shuffledStack.shift();
-let card3 = shuffledStack.shift();
-let card4 = shuffledStack.shift();
-let card5 = shuffledStack.shift();
+let card1 = stack.shift();
+let card2 = stack.shift();
+let card3 = stack.shift();
+let card4 = stack.shift();
+let card5 = stack.shift();
 
 player1.hand = [card1, card2, card3, card4, card5];
 
 // Spieler 2 mit der Vorlage erstellen
-const player2 = JSON.parse(JSON.stringify(player));
+const player2 = {...player};
 player2.name = "Andi Feind";
 
 // Fünf Karten ziehen
-card1 = shuffledStack.shift();
-card2 = shuffledStack.shift();
-card3 = shuffledStack.shift();
-card4 = shuffledStack.shift();
-card5 = shuffledStack.shift();
+card1 = stack.shift();
+card2 = stack.shift();
+card3 = stack.shift();
+card4 = stack.shift();
+card5 = stack.shift();
 
 player2.hand = [card1, card2, card3, card4, card5];
 
 // Die erste aufgedeckte Karte.
 // Die Spieler sollen die passenden Karten auf den gameStack ablegen.
-const gameStack = shuffledStack.shift();
-function karteAblegen (arr, gameStack){
-    if(gameStack.color===arr.color||gameStack.number=== arr.number){
+const gameStack = [stack.shift()];
+console.log(`Erste Karte ist`, gameStack)
+console.log("player1 Hand", player1.hand);
+console.log("player2", player2.hand);
 
-
+function karteAblegen (hand){
+    for(i=0; i<hand.length;i++){
+        if(gameStack[0].color===hand[i].color){
+            return gameStack.unshift(hand[i]), hand.splice(hand[i], 1);
+        } 
+        if(gameStack[0].number=== hand[i].number){
+            return gameStack.unshift(hand[i]), hand.splice(hand[i], 1);
+        }else{ return hand.push(stack.shift())
+        }
+        // player1.hand += [stack.shift()];
     }
-}
-
+};
+console.log(karteAblegen(player1))
+console.log(`gameStack`, gameStack)
+console.log(karteAblegen(player2))
+console.log(`gameStack`, gameStack);
 // ...was ist denn hier passiert?!
-console.log("player1", player1);
-console.log("player2", player2);
-console.log({ gameStack, shuffledStack });
+console.log("player1", player1.hand);
+console.log("player2", player2.hand);
+
 // Bitte hilf mir!
 
 // 1. Spieler anlegen
