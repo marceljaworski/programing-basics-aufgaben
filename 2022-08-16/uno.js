@@ -5,6 +5,19 @@ const player = {
     hand: [],
     score: 0,
     level: "beginner",
+    karteAblegen: function ()  {
+        for(i=0; i< this.hand.length;i++){
+                    if(gameStack[0].color===this.hand[i].color){
+                        return gameStack.unshift(this.hand[i]), this.hand.splice(this.hand[i], 1);
+                    } 
+                    if(gameStack[0].number=== this.hand[i].number){
+                        return gameStack.unshift(this.hand[i]), this.hand.splice(this.hand[i], 1);
+                    }else{ return this.hand.push(stack.shift())
+                    }
+                    // player1.hand += [stack.shift()];
+                }
+
+    }
 };
 
 // Alle Karten im Spiel
@@ -66,7 +79,7 @@ let stack = [
 // Mischen, mischen, mischen!
 // Ganz schön lang, diese Zeile... Geht bestimmt besser.
 // const shuffledStack = stack.sort(() => Math.random() - 0.5).sort(); 
-function shuffledStack(arr){
+function shuffledStack(stack){
     const cardsCopy = [...stack];
     const shuffledCards = [];
     while(cardsCopy.length > 1){
@@ -114,18 +127,18 @@ console.log(`Erste Karte ist`, gameStack)
 console.log("player1 Hand", player1.hand);
 console.log("player2", player2.hand);
 
-function karteAblegen (hand){
-    for(i=0; i<hand.length;i++){
-        if(gameStack[0].color===hand[i].color){
-            return gameStack.unshift(hand[i]), hand.splice(hand[i], 1);
-        } 
-        if(gameStack[0].number=== hand[i].number){
-            return gameStack.unshift(hand[i]), hand.splice(hand[i], 1);
-        }else{ return hand.push(stack.shift())
-        }
-        // player1.hand += [stack.shift()];
-    }
-};
+// function karteAblegen (hand){
+//     for(i=0; i<hand.length;i++){
+//         if(gameStack[0].color===hand[i].color){
+//             return gameStack.unshift(hand[i]), hand.splice(hand[i], 1);
+//         } 
+//         if(gameStack[0].number=== hand[i].number){
+//             return gameStack.unshift(hand[i]), hand.splice(hand[i], 1);
+//         }else{ return hand.push(stack.shift())
+//         }
+//         // player1.hand += [stack.shift()];
+//     }
+// };
 console.log(karteAblegen(player1))
 console.log(`gameStack`, gameStack)
 console.log(karteAblegen(player2))
