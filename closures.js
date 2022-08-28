@@ -31,22 +31,42 @@ rundetAuf4(12.7491313);
 // DuckDuckGo: https://duckduckgo.com/?q=closures
 // Bing: https://www.bing.com/search?q=closures
 
-function suchMaschine(url){
-    const text = (message) => {
-       console.log (url+message);
+
+// const suchGoogle = suchMaschine(`https://bing.com/search?q=`);
+// const suchDuckGo = suchMaschine(`https://duckducguesses++;
+
+
+
+
+
+function multiplizieren (zahl){
+    const number = (number) => {
+        console.log(number * zahl)
     }
-    return text;
+    return number;
 }
-const suchGoogle = suchMaschine(`https://www.google.com/search?q=`);
-const suchDuckGo = suchMaschine(`https://duckduckgo.com/?q=`);
-const suchBing = suchMaschine(`https://bing.com/search?q=`);
-
-suchGoogle(`complexity`);
-suchDuckGo(`closures`);
-suchBing(`closures`);
+const mal2 = multiplizieren(2);
+const mal4 = multiplizieren(4);
 
 
+mal2(3);
+mal4(3);
 
+function guessingGame(amount){
+    let answer = Math.floor(Math.random()*10);
+    let guesses=0;
+    guesses++;
+    return function (guess){
+    // debugger;
+    if(guesses<amount){
+    if(guess === answer) return "You got it!";
+    if(guess>answer) return "Too high!";
+    else return "Too low!";
+    }
+    else return "Start a new Game";
+    }
+}
+var game5 = guessingGame(5);
 
-
+console.log(game5(8));
 
