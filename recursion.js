@@ -43,13 +43,22 @@ console.log(getSumOfArray([1, 2, 3, 4, 5, 6]));
 //     const hello = "hello world"
 //     reverse(hello) // dlrow olleh
 // ```
-function reverse(str){
-    return str.split('').reverse().join('');
-}
-
 // function reverse(str){
-//     if (str.length === 0) return 0;
-//     return reverse(str.charAt(0)+ str.splice(1));
+//     return str.split('').reverse().join('');
 // }
+
+function reverse(str){
+    if (str.length === 0) return "";
+    console.log(str)
+    return reverse(str.slice(1)) + str.charAt(0);
+}
 console.log(reverse("hello world"));
+
+// function bigWordInString(str){
+//     if(str.length === 0) return 0;
+//     // if(str.charAt(0).includes("W")) return str.charAt(0);
+//     return  bigWordInString(str.charAt(0).includes("W")) + str.slice(1);
+// };
+
+// console.log(bigWordInString("hello World"));
  
