@@ -30,7 +30,7 @@
 const getSumOfArray = (arr) => {
     if (arr.length === 0) return 0;
     console.log(arr)
-    return arr.shift() + getSumOfArray(arr);
+    return   getSumOfArray(arr.splice(1)) + arr [0];
 };
 
 console.log(getSumOfArray([1, 2, 3, 4, 5, 6]));
@@ -54,6 +54,12 @@ function reverse(str){
 }
 console.log(reverse("hello world"));
 
+const reverseString = (str) => {
+    if (str.length === 1) return str;
+    return (
+    str.charAt(str.length - 1) + reverseString(str.slice(0, str.length - 1))
+    );
+    }; 
 // function bigWordInString(str){
 //     if(str.length === 0) return 0;
 //     // if(str.charAt(0).includes("W")) return str.charAt(0);
