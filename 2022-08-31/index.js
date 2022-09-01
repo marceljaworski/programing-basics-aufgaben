@@ -59,7 +59,7 @@ function colorPatternTimes(array) {
       if (arr[arr.length - 1] !== word) arr.push(word);
     }
     return arr.length - 1 + array.length * 2;
-  }
+}
 
 console.log(colorPatternTimes(["Blue"])) // return 2
 
