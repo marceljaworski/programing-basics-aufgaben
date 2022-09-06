@@ -1,14 +1,7 @@
 // ------
 // Wir programmieren uns ein Restaurant! Das Restaurant verfügt über eine Speisekarte, kann geöffnet oder geschlossen werden und führt eine Kasse mit ein wenig Wechselgeld zu Beginn. Über das Geld in der Kasse wird das Personal bezahlt, sobald das Restaurant schließt.
 // Benötigt werden außerdem folgende Personengruppen: Gäste, Kellner, Köche (und Barkeeper). Gäste sollen Speisen und Getränke bestellen können, die von Kellnern aufgenommen und an Köche (und Barkeeper) weitergegeben werden. Köche (und Barkeeper) können Bestellungen von Kellnern erhalten und sie zubereiten. Nach der Zubereitung bringen Kellner die Speisen und Getränke zu den Gästen. Nach dem Essen bezahlen Gäste an Kellner. Zum Schluss bekommen Kellner und Köche (und Barkeeper) ihren Lohn.
-const speiseKarte = [
-    {speise :"Bretzel Pizza", preise : 12},
-    {speise :"Bretzel Burger", preise : 10}, 
-    {speise :"Bretzel Nudeln", preise : 8},
-    {speise :"Bretzel Suppe", preise : 7}, 
-    {speise :"Bretzel Salad", preise : 10}, 
-    {speise :"Bretzel Cookies", preise : 12}
-]
+
 const getränkeKarte = [
     {getränk : "Limonade", preise : 2}, 
     {getränk :"Bier", preise : 3}, 
@@ -22,15 +15,36 @@ const getSumOfArray = (arr) => {
 };
 
 class Restaurant {
-    constructor(name, kasse, geoeffnet, speisekarte, getränkeKarte, bestellungen, mitarbeiter){
+    constructor(speisekarte, name, kasse, geoeffnet, speisekarte, getränkeKarte, bestellungen, mitarbeiter){
+        this.speiseKarte = [
+            {speise :"Bretzel Pizza", preise : 12},
+            {speise :"Bretzel Burger", preise : 10}, 
+            {speise :"Bretzel Nudeln", preise : 8},
+            {speise :"Bretzel Suppe", preise : 7}, 
+            {speise :"Bretzel Salad", preise : 10}, 
+            {speise :"Bretzel Cookies", preise : 12}
+        ]
         this.name = name;
-        this.kasse = kasse;
-        this.geoeffnet = geoeffnet;
+        this.kasse = 50;
+        this.geoeffnet = false;
         this.speisekarte = speisekarte;
         this.getränkeKarte = getränkeKarte;
-        this.bestellungen = bestellungen;
-        this.mitarbeiter = mitarbeiter;
+        this.bestellungen = [];
+        this.mitarbeiter = [];
     } 
+    mitarbeiterHinzufugen(mitarbeiter) {
+        this.mitarbeiter.push(mitarbeiter)
+    }
+    bestellungRegistrieren(){
+        this.bestellungen.push(bestellung);
+    }   
+    kassieren(bestellung){
+        this.kasse += bestellung.preisen.preis;
+    }   
+    personalBezahlen(){
+        const lohn = 60;
+        if(this.kasse<) 
+    }
     oeffnen(){
         this.geoeffnet = true;
         console.log(`${this.name} Restaurant ist geoffnet. Herzlich Willkommen! `)
@@ -43,6 +57,27 @@ class Restaurant {
         this.kasse = kasse - lohn * (this.mitarbeiter.length);
     }  
 };
+// Bestellung
+// ------------------------
+ class Bestellung {
+    constructor(gast, speise){
+        this.gast = gast;
+        this.speise = speise;
+        this.zubereitet = false;
+        this.serviert = false;
+        this.abgerechnet = false;
+    }
+    zubereiten() {
+        this.zubereitet = true;
+    }
+    servieren() {
+        if (this.zubereitet) return console.error("kann noch nicht serviert ")
+        this.serviert = true;
+    }
+    abrechnen(!this.serviert){ return console.error("kann noch nicht abrechnet werden: ");
+    this.abgerechnet = true;
+    }
+ }
 const lohn = 100;
 
 

@@ -9,10 +9,10 @@ class Pokemon {
         const doesSkillAlreadyExist = this.skills.some((skill)=> skill.name === attackSkill.name)
         if (doesSkillAlreadyExist) {
             return this.name + "kann dieses Skill bereits."
-        }else{
-            this.skills.push(attackSkill)
-            return this.name + " hat neue Skill gelernt";
         }
+        this.skills.push(attackSkill)
+        return this.name + " hat neue Skill gelernt";
+        
     }
     showStatus(){
         if (this.gesunheit < 0){
@@ -21,6 +21,11 @@ class Pokemon {
         return this.name + " hat " + this.gesunheit + " gesunheit und " + this.magie + " Magie übrig";
     }
     attack(attackSkill , pokemonObject) {
+        const skill = this.skills.find((skill)=> skill.name === attackSkill)
+        if(!attackSkill){
+            return this.name + " kennt den Skill nicht";
+        }
+
         if(this.magie <  this.skills[0].magie){
             return `Dein Pokemon hat nich genug Magie um dieses Attack einzusetzen`;
         }else{
