@@ -15,75 +15,116 @@ Beispiele für Aufgaben:
 */
 
 const todo = {
-    aufgaben : [
-        {
-            aufgabe : `frustuckMachen`,
-            erledigt : false,
-        },
-        {
-            aufgabe : `einkaufenGehen`,
-            erledigt : false,
-        },
-        {
-            aufgabe : `pflanzenGiessen`,
-            erledigt : false,
-        },
-    ],
+    naechsteId: 1,
+    aufgaben : [],
+    aufgabeHinzufugen(bezeichnung) {
+        const aufgabe = {
+            id: this.naechsteId,
+            aufgabe : bezeichnung,
+            erledigt: false,
+        };
+        this.aufgaben.push(aufgabe);
+        this.naechsteId++;
+    },
     aufgabeErledigen(index) {
         if(this.aufgaben[index].erledigt) return console.error(`Die Aufgabe ${this.aufgaben[index].aufgabe} wurde erledigt.`);
         this.aufgaben[index].erledigt = true;
     },
-    // frustuckMachen() {
-    //     if(this.aufgaben[0].erledigt) return console.error("Die Frustuck wurde schon vorbereitet");
-    //     this.aufgaben[0].erledigt = true;
-    // },
-    // einkaufenGehen: function () {
-    //     if(this.aufgaben[1].erledigt) return console.error("Die Einkauf wurde schon gekauft");
-    //     this.aufgaben[1].erledigt = true;
-    // },
-    // pflanzenGiessen() {
-    //     if(this.aufgaben[2].erledigt) return console.error("Die Pflanzen wurden schon gegossen");
-    //     this.aufgaben[2].erledigt = true;
-    // },
+    check() {
+        zuErledigen = this.aufgaben.filter(element => !element.erledigt);
+        // console.log(zuErledigen)
+        aufgabeZuErledigen = zuErledigen.map(element => element.aufgabe);
+        // console.log(aufgabeZuErleding)
+        // console.log(Object.values(zuErledigen));
+        if(zuErledigen.length > 0) return console.log(`Es sind noch ${zuErledigen.length} Aufgaben zu erledigen: ${aufgabeZuErledigen.join(`, `)}`);
+        return console.log("alle Aufgaben sind erledigt!");
+    },
+    suchen(suchbegriff) {
+        return this.aufgaben.filter(aufgabe => aufgabe.bezeichnung.toLowerCase().includes(suchbegriff.toLowerCase()));
+    },
 };
+todo.aufgabeHinzufugen("frustuckMachen")
+todo.aufgabeHinzufugen("einkaufenGehen")
+todo.aufgabeHinzufugen("pflanzenGiessen")
+todo.aufgabeHinzufugen("rechnungenBezahlen")
 todo.aufgabeErledigen(0)
 todo.aufgabeErledigen(1)
 
-// console.log(todo)
-// todo.frustuckMachen()
-// console.log(todo)
-// todo.frustuckMachen()
-// console.log(todo)
-
-// todo.einkaufenGehen()
-// console.log(todo)
-// todo.einkaufenGehen()
-// console.log(todo)
-
-// todo.pflanzenGiessen()
-// console.log(todo)
-// todo.pflanzenGiessen()
-// console.log(todo)
-
-todo.aufgaben.push({
-    aufgabe : `rechnungenBezahlen`,
-    erledigt : false,
-},);
-
-// console.log(todo);
-// todo.rechnungenBezahlen = function () {
-//     if(this.aufgaben[3].erledigt) return console.error("Rechnungen wurden schon bezahlt");
-//     this.aufgaben[3].erledigt = true;
-// }
 console.log(todo);
 
-todo.check = function () {
-    zuErledigen = this.aufgaben.filter(element => !element.erledigt);
-    // console.log(zuErledigen)
-    aufgabeZuErledigen = zuErledigen.map(element => element.aufgabe);
-    // console.log(aufgabeZuErleding)
-    // console.log(Object.values(zuErledigen));
-    if(zuErledigen.length > 0) return console.log(`es sind noch ${zuErledigen.length} Aufgaben zu erledigen: ${aufgabeZuErledigen.join(`, `)}`);
-    return console.log("alle Aufgaben sind erledigt");
-}
+
 todo.check()
+
+
+// console.log("Dominiks Losung================================================================")
+// const todo = {
+//     naechsteId: 1,
+//     aufgaben: [],
+
+//     hinzufuegen(bezeichnung) {
+//         const aufgabe = {
+//             id: this.naechsteId,
+//             bezeichnung: bezeichnung,
+//             erledigt: false,
+//         };
+//         this.aufgaben.push(aufgabe);
+//         this.naechsteId++;
+//     },
+
+//     erledigen(id) {
+//         const aufgabe = this.aufgaben.find(aufgabe => aufgabe.id === id);
+//         if (!aufgabe) return console.log("Aufgabe nicht gefunden");
+//         aufgabe.erledigt = true;
+//     },
+
+//     loeschen(id) {
+//         const aufgaben = this.aufgaben.filter(aufgabe => aufgabe.id !== id);
+//         this.aufgaben = aufgaben;
+//     },
+
+//     unerledigteAufgaben() {
+//         return this.aufgaben.filter(aufgabe => aufgabe.erledigt === false);
+//     },
+
+//     suchen(suchbegriff) {
+//         return this.aufgaben.filter(aufgabe => aufgabe.bezeichnung.toLowerCase().includes(suchbegriff.toLowerCase()));
+//     },
+// };
+
+
+// console.log("Und die in eine Klasse umgewandelte Version:")
+// class Todo {
+//     constructor() {
+//         this.naechsteId = 1;
+//         this.aufgaben = [];
+//     }
+
+//     hinzufuegen(bezeichnung) {
+//         const aufgabe = {
+//             id: this.naechsteId,
+//             bezeichnung: bezeichnung,
+//             erledigt: false,
+//         };
+//         this.aufgaben.push(aufgabe);
+//         this.naechsteId++;
+//     }
+
+//     erledigen(id) {
+//         const aufgabe = this.aufgaben.find(aufgabe => aufgabe.id === id);
+//         if (!aufgabe) return console.log("Aufgabe nicht gefunden");
+//         aufgabe.erledigt = true;
+//     }
+
+//     loeschen(id) {
+//         const aufgaben = this.aufgaben.filter(aufgabe => aufgabe.id !== id);
+//         this.aufgaben = aufgaben;
+//     }
+
+//     unerledigteAufgaben() {
+//         return this.aufgaben.filter(aufgabe => aufgabe.erledigt === false);
+//     }
+
+//     suchen(suchbegriff) {
+//         return this.aufgaben.filter(aufgabe => aufgabe.bezeichnung.toLowerCase().includes(suchbegriff.toLowerCase()));
+//     }
+// };
