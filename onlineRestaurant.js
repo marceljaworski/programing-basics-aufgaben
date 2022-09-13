@@ -41,10 +41,10 @@ class Restaurant {
     kassieren(bestellung){
         this.kasse += bestellung.preisen.preis;
     }   
-    personalBezahlen(){
-        const lohn = 60;
-        if(this.kasse<) 
-    }
+    // personalBezahlen(){
+    //     const lohn = 60;
+    //     if(this.kasse<) 
+    // }
     oeffnen(){
         this.geoeffnet = true;
         console.log(`${this.name} Restaurant ist geoffnet. Herzlich Willkommen! `)
@@ -74,9 +74,9 @@ class Restaurant {
         if (this.zubereitet) return console.error("kann noch nicht serviert ")
         this.serviert = true;
     }
-    abrechnen(!this.serviert){ return console.error("kann noch nicht abrechnet werden: ");
-    this.abgerechnet = true;
-    }
+    // abrechnen(!this.serviert){ return console.error("kann noch nicht abrechnet werden: ");
+    // this.abgerechnet = true;
+    // }
  }
 const lohn = 100;
 

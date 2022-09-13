@@ -12,30 +12,30 @@
 // - Die zurückgegebene Zeichenfolge sollte nur alphabetische Zeichen (a-z) enthalten.
 // - Die Groß- und Kleinschreibung muss in der zurückgegebenen Zeichenkette beachtet werden (siehe 4. Beispiel oben).
 
-
-function wordRank1(str) { 
-    let value = 0;
-    let letters = str.split("");
-    const abc = [" ", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-    for (let i = 0; i < letters.length; i++){
-        for (let j = 0; j < abc.length; j++){
-            if (letters[i] == abc [j]){
-                value += abc.indexOf(letters[i]);
-            }
-        }
-    }
-    return value;
-
-}
-console.log("======")
-
-function satzRank(string){
-    let words = string.split(" ");
+function wordRank(str){
+    let words = str.split(" ");
     let values = words.map(word => wordRank1(word));
-    return words[values.indexOf(Math.max(...values))];
+    // console.log(values);
+    function wordRank1(str) { 
+        let value = 0;
+        let letters = str.split("");
+        const abc = ["", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+        for (let i = 0; i < letters.length; i++){
+            for (let j = 0; j < abc.length; j++){
+                if (letters[i] == abc[j]){
+                    value += abc.indexOf(letters[i]);
+                };
+            };
+        };
+        return value;
+    };
 
-}
-console.log(satzRank("The quick brown fox."))
-console.log(satzRank("Nancy is very pretty."))
-console.log(satzRank("Check back tomorrow, man!"))
-console.log(satzRank("Wednesday is hump day."))
+    solution = words[values.indexOf(Math.max(...values))];
+
+    return solution.replace(",", "").replace(".", "");
+};
+
+console.log(wordRank("The quick brown fox."))
+console.log(wordRank("Nancy is very pretty."))
+console.log(wordRank("Check back tomorrow, man!"))
+console.log(wordRank("Wednesday is hump day."))
